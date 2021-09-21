@@ -1,0 +1,15 @@
+<%= @properties.title %>
+<%= @properties.description %>
+Quartos: <%= @properties.rooms %>
+Banheiros: <%= @properties.bathroom %>
+Aceita Pets: <% if @properties.pets == true %>
+                  <%= 'Sim' %>
+                <% else %>
+                  <%= 'Não' %>
+                <% end %>
+Estacionamento: <% if @properties.parking_slot == true %>
+                  <%= 'Sim' %>
+                <% else%>
+                  <%= 'Não' %>
+                <% end%>
+Diária: R$ <%= @properties.daily_rate %>
