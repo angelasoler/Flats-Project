@@ -2,23 +2,23 @@
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
 
 <% if @properties.empty? %>
-  <%= 'Nenhum imóvel disponível'%>
-<% else %>
-  <% @properties.each do |p| %>
-    <%= link_to p.title, property_path(id: p.id) %>
-    <%= p.description %>
-  Quartos: <%= p.rooms %>
-  Banheiros: <% p.bathroom %>
-  Aceita Pets: <% if p.pets == true %>
-                    <% 'Sim' %>
-                  <% else %>
-                    <% 'Não' %>
-                  <% end %>
-  Estacionamento: <% if p.parking_slot == true %>
-                    <% 'Sim' %>
-                  <% else%>
-                    <% 'Não' %>
-                  <% end%>
-  Diária: R$ <% p.daily_rate %>
-  <% end %>
+  <div><span>Nenhum imóvel disponível</span></div>
+<% end %>
+
+<% @properties.each do |p| %>
+  <%= link_to p.title, property_path(id: p.id) %>
+  <%= p.description %>
+Quartos: <%= p.rooms %>
+Banheiros: <% p.bathroom %>
+Aceita Pets: <% if p.pets == true %>
+                  <% 'Sim' %>
+                <% else %>
+                  <% 'Não' %>
+                <% end %>
+Estacionamento: <% if p.parking_slot == true %>
+                  <% 'Sim' %>
+                <% else%>
+                  <% 'Não' %>
+                <% end%>
+Diária: R$ <% p.daily_rate %>
 <% end %>
