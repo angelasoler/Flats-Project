@@ -1,15 +1,33 @@
-<%= @properties.title %>
-<%= @properties.description %>
-Quartos: <%= @properties.rooms %>
-Banheiros: <%= @properties.bathroom %>
-Aceita Pets: <% if @properties.pets == true %>
-                  <%= 'Sim' %>
-                <% else %>
-                  <%= 'Não' %>
-                <% end %>
-Estacionamento: <% if @properties.parking_slot == true %>
-                  <%= 'Sim' %>
-                <% else%>
-                  <%= 'Não' %>
-                <% end%>
-Diária: R$ <%= @properties.daily_rate %>
+<div>
+<h1>
+  <%= @properties.title %>
+</h1>
+
+<h2><%= @properties.description %></h2>
+
+<dl>
+  <dt>Quartos:</dt>
+  <dd><%= @properties.rooms %></dd>
+
+  <dt>Banheiros:</dt>
+  <dd><%= @properties.bathroom %></dd>
+
+  <dt>Aceita Pets:</dt> 
+  <% if @properties.pets? %>
+    <dd>Sim</dd>
+  <% else %>
+    <dd>Não</dd>
+  <% end %>
+
+  <dt>Estacionamento:</dt>
+  <% if @properties.parking_slot? %>
+    <dd>Sim</dd>
+  <% else %>
+    <dd>Não</dd>
+  <% end %>
+
+  <dt>Diária:</dt> 
+  <dd><%= number_to_currency(@properties.daily_rate, unit: 'R$', separator: ',', format: '%u %n' )%></dd>
+
+  <%= link_to 'Voltar', root_path %>
+</div>

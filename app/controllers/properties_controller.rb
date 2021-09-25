@@ -1,9 +1,6 @@
 class PropertiesController < ApplicationController
-  # def index
-  #   @properties = Property.all
-  # end
-
   def show
-    @properties = Property.find(params[:id])
+    id = params[:id]
+    @properties = Property.find(id)
   end
 end

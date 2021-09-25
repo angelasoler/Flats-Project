@@ -1,6 +1,10 @@
 <h1>Flats</h1>
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
 
+<nav>
+<%= link_to 'Cadastra Imóvel', form_path %>
+</nav>
+
 <% if @properties.empty? %>
   <div><span>Nenhum imóvel disponível</span></div>
 <% end %>
@@ -10,11 +14,11 @@
   <%= p.description %>
 Quartos: <%= p.rooms %>
 Banheiros: <% p.bathroom %>
-Aceita Pets: <% if p.pets == true %>
-                  <% 'Sim' %>
-                <% else %>
-                  <% 'Não' %>
-                <% end %>
+Aceita Pets:  <% if p.pets == true %>
+                <% 'Sim' %>
+              <% else %>
+                <% 'Não' %>
+              <% end %>
 Estacionamento: <% if p.parking_slot == true %>
                   <% 'Sim' %>
                 <% else%>
@@ -22,3 +26,4 @@ Estacionamento: <% if p.parking_slot == true %>
                 <% end%>
 Diária: R$ <% p.daily_rate %>
 <% end %>
+
