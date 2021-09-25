@@ -3,4 +3,8 @@ class PropertiesController < ApplicationController
     id = params[:id]
     @properties = Property.find(id)
   end
+
+  def new
+  end
+  @properties = Property.new
 end
