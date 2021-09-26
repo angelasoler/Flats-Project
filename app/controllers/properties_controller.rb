@@ -5,6 +5,11 @@ class PropertiesController < ApplicationController
   end
 
   def new
+    @properties = Property.new
   end
-  @properties = Property.new
+  
+  def create
+    pro = Property.create(params.require(:property).permit(:title,:description, :rooms, :bathrooms, :pets, :parking_slot, :daily_rate))
+    redirect_to property_path(pro.id)
+  end
 end

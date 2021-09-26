@@ -2,7 +2,7 @@
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
 
 <nav>
-<%= link_to 'Cadastra Imóvel', form_path %>
+<%= link_to 'Cadastra Imóvel', new_property_url %>
 </nav>
 
 <% if @properties.empty? %>
@@ -13,17 +13,17 @@
   <%= link_to p.title, property_path(id: p.id) %>
   <%= p.description %>
 Quartos: <%= p.rooms %>
-Banheiros: <% p.bathroom %>
+Banheiros: <%= p.bathroom %>
 Aceita Pets:  <% if p.pets == true %>
-                <% 'Sim' %>
+                <%= 'Sim' %>
               <% else %>
-                <% 'Não' %>
+                <%= 'Não' %>
               <% end %>
 Estacionamento: <% if p.parking_slot == true %>
-                  <% 'Sim' %>
+                  <%= 'Sim' %>
                 <% else%>
-                  <% 'Não' %>
+                  <%= 'Não' %>
                 <% end%>
-Diária: R$ <% p.daily_rate %>
+Diária: R$ <%= p.daily_rate %>
 <% end %>
 
