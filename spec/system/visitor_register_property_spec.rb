@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Visitor register property'
+describe 'Visitor register property' do
 
   it 'successfully' do
     #Arrange
@@ -35,7 +35,7 @@ describe 'Visitor register property'
     click_on 'Cadastrar Imóvel'
     click_on 'Enviar'
 
-    expect(page).to have_content('não pode ficar em branco', count: 5)
+    expect(page).to have_content('Todos campos devem ser preenchidos', count: 5)
     # expect(page).to have_content('Título não pode ficar em branco')
     # expect(page).to have_content('Descrição não pode ficar em branco')
     # expect(page).to have_content('Quartos não pode ficar em branco')
@@ -44,6 +44,24 @@ describe 'Visitor register property'
     expect(Property.count).to eq(0)
   end
 
-  # TODO: verificar que rooms, daily_rate, bathrooms são numéricos
-  # TODO: verificar que rooms, daily_rate, bathrooms são maiores que zero
+  # it 'and bathroom, daily_rate and rooms fields are numeric' do
+  #   visit root_path
+
+  #   click_on 'Cadastrar Imóvel'
+  #   click_on 'Enviar'
+
+  #   expect(bathroom, rooms, daily_rate).to be_an(integer)
+  #   expect(Property.count).to eq(0)
+  # end
+
+  # it 'and bathroom, daily_rate and rooms fields are greater than zero' do
+  #   visit root_path
+
+  #   click_on 'Cadastrar Imóvel'
+  #   click_on 'Enviar'
+
+  #   expect(bathroom, rooms, daily_rate).to be(> 0)
+  #   expect(Property.count).to eq(0)
+  # end
+
 end
