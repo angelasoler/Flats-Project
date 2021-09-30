@@ -1,6 +1,14 @@
 <h1>Cadastro de Imóvel</h1>
 
-<%= form_with(model: @properties) do |f| %>
+<% if @property.errors.any? %>
+  <ul>
+    <% @property.errors.full_messages.each do |error| %>
+     <li><%= error %></li>
+    <%end%>
+  </ul>
+<% end %>
+
+<%= form_with(model: @property) do |f| %>
   <div>
     <%= f.label :title, 'Título' %>
     <%= f.text_field :title %>
@@ -18,18 +26,18 @@
 
   
   <div>
-    <%= f.label :daily_ratet, 'Diária' %>
+    <%= f.label :daily_rate, 'Diária' %>
     <%= f.number_field :daily_rate %>
+  </div>
+
+  <div>
+    <%= f.label :property_type_id, 'Tipo' %>
+    <%= f.collection_select :property_type_id, PropertyType.all, :id, :name %>
   </div>
 
   <div>
     <%= f.label :bathroom, 'Banheiros' %>
     <%= f.number_field :bathroom %>
-  </div>
-
-  <div>
-    <%= f.label :type, 'Tipo' %>
-    <%= f.check_box :type %>
   </div>
 
   <div>

@@ -5,19 +5,25 @@ class PropertiesController < ApplicationController
   end
 
   def new
-    @properties = Property.new
+    @property = Property.new
   end
   
   def create
-    properties = Property.create(params.require(:property).permit(:title,:description, 
-                                                                  :rooms, :bathrooms, :pets, 
-                                                                  :parking_slot, :daily_rate))
-
-    if @properties.save
+    @property = Property.new(property_params)
+    if @property.save
       redirect_to property_path(properties.id)
     else
       flash[:alert] = "Todos campos devem ser preenchidos"
       render :new
     end
+  end
+
+  private
+
+  def property_params
+    params.require(:property).permit(:title,:description, 
+                                      :rooms, :bathrooms, :pets, 
+                                      :parking_slot, :daily_rate, 
+                                      :property_type_id)
   end
 end

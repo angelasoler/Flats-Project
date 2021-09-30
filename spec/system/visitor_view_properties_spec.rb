@@ -1,15 +1,18 @@
 require 'rails_helper'
 
-describe 'Visitor view properties' do
+describe 'Visitor visit homepage' do
   it 'and view properties' do
-    Property.create({title:'Casa com quintal em Copacabana', 
+    property_type = PropertyType.create!(name:'Casa')
+    Property.create!({title:'Casa com quintal em Copacabana', 
                       description: 'Excelente casa, recém reformada com 2 vagas de garagem',
-                      rooms: 3,  parking_slot: true
+                      rooms: 3,  parking_slot: true, bathroom: 2, pets: true, daily_rate: 500,
+                      property_type: property_type
                       })
 
-    Property.create({title: 'Cobertura em Manaus', 
+    Property.create!({title: 'Cobertura em Manaus', 
                       description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
-                      rooms: 5, parking_slot: false
+                      rooms: 5, parking_slot: false,bathroom: 1, pets: true, daily_rate: 300,
+                      property_type: property_type
                       })
 
     visit root_path
@@ -20,6 +23,8 @@ describe 'Visitor view properties' do
     expect(page).to have_content('Cobertura em Manaus')
     expect(page).to have_content('Cobertura de 300m2, churrasqueira e sauna privativa')
     expect(page).to have_content('Quartos: 5')
+
+    expect(page).to have_content("Tipo: Casa")
   end
 
   it 'and theres no property available' do
@@ -31,9 +36,10 @@ describe 'Visitor view properties' do
 
   it 'and view property details' do
     #Arrange => Preparar (os dados)
-    Property.create({ title: 'Casa com quintal em Copacabana', 
+    Property.create!({ title: 'Casa com quintal em Copacabana', 
                       description: 'Excelente casa, recém reformada com 2 vagas de garagem',
-                      rooms: 3, parking_slot: true, bathroom: 2, pets: true, daily_rate: 500
+                      rooms: 3, parking_slot: true, bathroom: 2, pets: true, daily_rate: 500,
+                      property_type: property_type
                     })
 
     visit root_path
@@ -47,16 +53,19 @@ describe 'Visitor view properties' do
     expect(page).to have_content("Aceita Pets: Sim")
     expect(page).to have_content("Estacionamento: Sim")
     expect(page).to have_content("Diária: R$ 500,00")
+
+    expect(page).to have_content("Tipo: Casa")
   end
    
   it 'and view property details and return to home page' do
     property = Property.create({ title: 'Casa com quintal em Copacabana', 
                                  description: 'Excelente casa, recém reformada com 2 vagas de garagem',
-                                 rooms: 3, parking_slot: true, bathroom: 2, pets: true, daily_rate: 500
+                                 rooms: 3, parking_slot: true, bathroom: 2, pets: true, daily_rate: 500,
+                                 property_type: property_type
                                })
     Property.create({ title: 'Cobertura em Manaus', 
                       description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
-                      rooms: 5, parking_slot: false
+                      rooms: 5, parking_slot: false, property_type: property_type
                     })
     #Act => Agir (executar a funcionalidade)
     visit root_path

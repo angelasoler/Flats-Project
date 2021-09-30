@@ -2,7 +2,7 @@
 <h3>Boas vindas ao sistema de locação de apartamentos</h3>
 
 <nav>
-<%= button_to 'Cadastrar Imóvel', new_property_url %>
+<%= link_to 'Cadastrar Imóvel', new_property_path %>
 </nav>
 
 <% if @properties.empty? %>

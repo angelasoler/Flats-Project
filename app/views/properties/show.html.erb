@@ -6,6 +6,9 @@
 <h2><%= @properties.description %></h2>
 
 <dl>
+  <dt>Tipo:</dt>
+  <dd><%= @property.property_type.name %></dd>
+
   <dt>Quartos:</dt>
   <dd><%= @properties.rooms %></dd>
 
@@ -28,6 +31,6 @@
 
   <dt>Diária:</dt> 
   <dd><%= number_to_currency(@properties.daily_rate, unit: 'R$', separator: ',', format: '%u %n' )%></dd>
-
+</dl>
   <%= link_to 'Voltar', root_path %>
 </div>
