@@ -23,8 +23,6 @@ describe 'Visitor visit homepage' do
     expect(page).to have_content('Cobertura em Manaus')
     expect(page).to have_content('Cobertura de 300m2, churrasqueira e sauna privativa')
     expect(page).to have_content('Quartos: 5')
-
-    expect(page).to have_content("Tipo: Casa")
   end
 
   it 'and theres no property available' do
@@ -53,8 +51,6 @@ describe 'Visitor visit homepage' do
     expect(page).to have_content("Aceita Pets: Sim")
     expect(page).to have_content("Estacionamento: Sim")
     expect(page).to have_content("Diária: R$ 500,00")
-
-    expect(page).to have_content("Tipo: Casa")
   end
    
   it 'and view property details and return to home page' do

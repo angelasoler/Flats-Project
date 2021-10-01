@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
   def index
     @properties = Property.all
-  end
-
-  def show
-    @properties = Property.find(params[:id])
+    @property_type = PropertyType.all
   end
 end
