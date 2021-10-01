@@ -30,7 +30,7 @@
   <% end %>
 
   <dt>Diária:</dt> 
-  <dd><%= number_to_currency(@properties.daily_rate, unit: 'R$', separator: ',', format: '%u %n' )%></dd>
+  <dd><%= number_to_currency(@properties.daily_rate)%></dd>
 </dl>
   <%= link_to 'Voltar', root_path %>
 </div>

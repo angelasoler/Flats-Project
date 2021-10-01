@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'visitor filter properties by type' do
-  ir 'using links on homepage' do
+  it 'using links on homepage' do
     PropertyType.create!(name: 'Apartamento')
     PropertyType.create!(name: 'Casa')
     PropertyType.create!(name: 'Sítio')

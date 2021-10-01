@@ -37,7 +37,7 @@ describe 'Visitor register property' do
     click_on 'Cadastrar Imóvel'
     click_on 'Enviar'
 
-    expect(page).to have_content('Todos campos devem ser preenchidos', count: 5)
+    expect(page).to have_content('não pode ficar em branco', count: 5)
     # expect(page).to have_content('Título não pode ficar em branco')
     # expect(page).to have_content('Descrição não pode ficar em branco')
     # expect(page).to have_content('Quartos não pode ficar em branco')
