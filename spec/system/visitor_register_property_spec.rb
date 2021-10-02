@@ -8,7 +8,6 @@ describe 'Visitor register property' do
     #Act
     visit root_path
     click_on 'Cadastrar Imóvel'
-
     fill_in 'Título', with: 'Casa em Florianópolis'
     fill_in 'Descrição', with: 'Ótima casa perto do UFSC'
     fill_in 'Quartos', with: 3
@@ -17,7 +16,6 @@ describe 'Visitor register property' do
     select 'Casa', from: 'Tipo'
     check  'Aceita Pets'
     check 'Estacionamento'
-
     click_on 'Enviar'
 
     #Assert
@@ -47,22 +45,42 @@ describe 'Visitor register property' do
   end
 
   # it 'and bathroom, daily_rate and rooms fields are numeric' do
+  #   PropertyType.create!(name: 'Casa')
   #   visit root_path
 
   #   click_on 'Cadastrar Imóvel'
+  #   fill_in 'Título', with: 'Casa em Florianópolis'
+  #   fill_in 'Descrição', with: 'Ótima casa perto do UFSC'
+  #   fill_in 'Quartos', with: 'dois'
+  #   fill_in 'Diária', with: 'duzentos'
+  #   fill_in 'Banheiros', with: 'tres'
+  #   select 'Casa', from: 'Tipo'
+  #   check  'Aceita Pets'
+  #   check 'Estacionamento'
   #   click_on 'Enviar'
 
-  #   expect(bathroom, rooms, daily_rate).to be_an(integer)
+  #   expect(page).to have_content('não é um número inteiro')
+  #   expect(page).to have_css('h1', text: 'Cadastro de Imovel')
   #   expect(Property.count).to eq(0)
   # end
 
-  # it 'and bathroom, daily_rate and rooms fields are greater than zero' do
-  #   visit root_path
+  it 'and bathroom, daily_rate and rooms fields are greater than zero' do
+    PropertyType.create!(name: 'Casa')
+    visit root_path
 
-  #   click_on 'Cadastrar Imóvel'
-  #   click_on 'Enviar'
+    click_on 'Cadastrar Imóvel'
+    fill_in 'Título', with: 'Casa em Florianópolis'
+    fill_in 'Descrição', with: 'Ótima casa perto do UFSC'
+    fill_in 'Quartos', with: -3
+    fill_in 'Diária', with: -200
+    fill_in 'Banheiros', with: -3
+    select 'Casa', from: 'Tipo'
+    check  'Aceita Pets'
+    check 'Estacionamento'
+    click_on 'Enviar'
 
-  #   expect(bathroom, rooms, daily_rate).to be(> 0)
-  #   expect(Property.count).to eq(0)
-  # end
+    expect(page).to have_content('deve ser maior que 0')
+    expect(page).to have_css('h1', text: 'Cadastro de Imóvel')
+    expect(Property.count).to eq(0)
+  end
 end

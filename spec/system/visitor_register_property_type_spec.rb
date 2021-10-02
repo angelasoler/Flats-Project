@@ -28,17 +28,17 @@ describe 'Visitor register property type' do
     expect(page).to have_content('Nome do tipo do seu imóvel')
   end
 
-  it 'and register and exisiting type' do
+  it 'and register and existing type' do
     property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
     PropertyType.create!(name: 'Casa')
       
     visit root_path
     click_on 'Cadastrar Imóvel'
     click_on 'Cadastrar Tipo De Imóvel'
-    fill_in 'Digite o tipo do seu imóvel', with: 'Casa'
+    fill_in 'Nome do tipo do seu imóvel', with: 'Casa'
     click_on 'Cadastrar'
 
-    expect(page).to have_content('Esse tipo de imóvel já exite')
-    expect(page).to have_content('Cadastro de Imóvel')
+    expect(page).to have_content('Nome já está em uso')
+    expect(page).to have_link('Cadastrar Imóvel')
   end
 end

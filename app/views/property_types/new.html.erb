@@ -4,6 +4,9 @@
   <ul>
     <% @property_type.errors.full_messages.each do |error| %>
      <li><%= error %></li>
+     <% if error == 'Nome já está em uso' %>
+      <%= link_to 'Cadastrar Imóvel', new_property_path%>
+      <% end %>
     <%end%>
   </ul>
 <% end %>
