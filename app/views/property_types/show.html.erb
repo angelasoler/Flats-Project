@@ -1,5 +1,4 @@
 <h1>Imóveis do tipo <%= @property_type.name %></h1>
 <% @property_type.properties.each do |property| %>
-  <%= p.title %>
-  
+  <%= property.title %>
 <% end %>

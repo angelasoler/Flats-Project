@@ -4,19 +4,19 @@ describe 'Visitor register property' do
 
   it 'successfully' do
     #Arrange
-    PropertyType.create!(name: 'casa')
+    PropertyType.create!(name: 'Casa')
     #Act
     visit root_path
     click_on 'Cadastrar Imóvel'
 
     fill_in 'Título', with: 'Casa em Florianópolis'
     fill_in 'Descrição', with: 'Ótima casa perto do UFSC'
-    fill_in 'Quartos', with: '3'
+    fill_in 'Quartos', with: 3
     fill_in 'Diária', with: 200
-    fill_in 'Banheiros', with: '2'
+    fill_in 'Banheiros', with: 2
     select 'Casa', from: 'Tipo'
     check  'Aceita Pets'
-    check 'Vaga de Estacionamento'
+    check 'Estacionamento'
 
     click_on 'Enviar'
 
@@ -26,7 +26,7 @@ describe 'Visitor register property' do
     expect(page).to have_content('Quartos: 3')
     expect(page).to have_content('Banheiros: 2') 
     expect(page).to have_content('Aceita Pets: Sim')
-    expect(page).to have_content('Estacionamneto: Sim')
+    expect(page).to have_content('Estacionamento: Sim')
     expect(page).to have_content('Diária: R$ 200,00')
     expect(page).to have_content("Tipo: Casa")
   end
@@ -38,11 +38,11 @@ describe 'Visitor register property' do
     click_on 'Enviar'
 
     expect(page).to have_content('não pode ficar em branco', count: 5)
-    # expect(page).to have_content('Título não pode ficar em branco')
-    # expect(page).to have_content('Descrição não pode ficar em branco')
-    # expect(page).to have_content('Quartos não pode ficar em branco')
-    # expect(page).to have_content('Banheiros não pode ficar em branco')
-    # expect(page).to have_content('Diária não pode ficar em branco')
+    expect(page).to have_content('Título não pode ficar em branco')
+    expect(page).to have_content('Descrição não pode ficar em branco')
+    expect(page).to have_content('Quartos não pode ficar em branco')
+    expect(page).to have_content('Banheiros não pode ficar em branco')
+    expect(page).to have_content('Diária não pode ficar em branco')
     expect(Property.count).to eq(0)
   end
 
@@ -65,5 +65,4 @@ describe 'Visitor register property' do
   #   expect(bathroom, rooms, daily_rate).to be(> 0)
   #   expect(Property.count).to eq(0)
   # end
-
 end

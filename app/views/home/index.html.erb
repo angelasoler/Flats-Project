@@ -15,8 +15,8 @@
 <aside>
   <h2>Filtrar por tipo:</h2>
   <nav>
-    <% @property_type.each do |property_type| %>
-      <% link_to property_type.name, property_type_path(property_type.id) %>
+    <% @property_type.each do |type| %>
+      <%= link_to type.name, property_type_path(type.id) %>
     <% end %>
   </nav> 
 </aside>

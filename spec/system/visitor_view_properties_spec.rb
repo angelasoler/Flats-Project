@@ -75,5 +75,4 @@ describe 'Visitor visit homepage' do
     expect(page).to have_content('Casa com quintal em Copacabana')
     expect(page).to have_content('Cobertura em Manaus')
   end
-
 end

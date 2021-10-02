@@ -35,6 +35,5 @@ describe 'visitor filter properties by type' do
     expect(page).to have_css('h1', text: 'Imóveis do tipo Casa')
     expect(page).to have_content('Casa com quintal em Copacabana')
     expect(page).not_to have_content('Cobertura em Manaus')
-
   end
 end
