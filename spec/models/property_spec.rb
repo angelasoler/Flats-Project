@@ -16,6 +16,20 @@ RSpec.describe Property, type: :model do
       property.valid?
       expect(property.errors.full_messages_for(:description)).to include('Descrição não pode ficar em branco')
     end
-
+    it 'rooms must be present' do
+      property = Property.new
+      property.valid?
+      expect(property.errors.full_messages_for(:rooms)).to include('Quartos não pode ficar em branco')
+    end
+    it 'bathroom must be present' do
+      property = Property.new
+      property.valid?
+      expect(property.errors.full_messages_for(:bathroom)).to include('Banheiros não pode ficar em branco')
+    end
+    it 'daily rate must be present' do
+      property = Property.new
+      property.valid?
+      expect(property.errors.full_messages_for(:daily_rate)).to include('Diária não pode ficar em branco')
+    end
   end
 end

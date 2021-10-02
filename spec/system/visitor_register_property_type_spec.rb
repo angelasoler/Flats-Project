@@ -15,18 +15,18 @@ describe 'Visitor register property type' do
 
   end
 
-  # it 'and must fill the field' do
-  #   property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
+  it 'and must fill the field' do
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
       
-  #   visit root_path
-  #   click_on 'Cadastrar Imóvel'
-  #   click_on 'Cadastrar Tipo De Imóvel'
-  #   fill_in 'Digite o tipo do seu imóvel', with: ''
-  #   click_on 'Cadastrar'
+    visit root_path
+    click_on 'Cadastrar Imóvel'
+    click_on 'Cadastrar Tipo De Imóvel'
+    fill_in 'Digite o tipo do seu imóvel', with: ''
+    click_on 'Cadastrar'
 
-  #   expect(page).to have_content('Campo não pode ficar em branco')
-  #   expect(page).to have_content('Digite o tipo do seu imóvel')
-  # end
+    expect(page).to have_content('Campo não pode ficar em branco')
+    expect(page).to have_content('Digite o tipo do seu imóvel')
+  end
 
   # it 'and ' do
   #   property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
