@@ -13,12 +13,8 @@ class PropertyTypesController < ApplicationController
     if @property_type.save
       flash[:alert] = 'Tipo de imóvel cadastrado com sucesso!'
       redirect_to new_property_path
-    elsif @property_type.blank?
-      flash[:alert] = 'Campo não pode ficar em branco'
+    else
       render :new
-    # elsif
-    #   flash[:alert] = 'Esse tipo de imóvel já exite'
-    #   redirect_to  new_property_path
     end
   end
 end  

@@ -7,7 +7,7 @@ describe 'Visitor register property type' do
     visit root_path
     click_on 'Cadastrar Imóvel'
     click_on 'Cadastrar Tipo De Imóvel'
-    fill_in 'Digite o tipo do seu imóvel', with: 'casa'
+    fill_in 'Nome do tipo do seu imóvel', with: 'casa'
     click_on 'Cadastrar'
     
     expect(page).to have_content('Tipo de imóvel cadastrado com sucesso!')
@@ -21,11 +21,11 @@ describe 'Visitor register property type' do
     visit root_path
     click_on 'Cadastrar Imóvel'
     click_on 'Cadastrar Tipo De Imóvel'
-    fill_in 'Digite o tipo do seu imóvel', with: ''
+    fill_in 'Nome do tipo do seu imóvel', with: ''
     click_on 'Cadastrar'
 
-    expect(page).to have_content('Campo não pode ficar em branco')
-    expect(page).to have_content('Digite o tipo do seu imóvel')
+    expect(page).to have_content('Nome não pode ficar em branco')
+    expect(page).to have_content('Nome do tipo do seu imóvel')
   end
 
   # it 'and ' do
