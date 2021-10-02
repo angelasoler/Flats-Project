@@ -2,7 +2,7 @@
 pt-BR:
   activerecord:
     models:
-      property_owner: 'Locatario'
+      property_owner: 'Proprietario'
     attributes:
       property_owner:
         password: 'Senha'

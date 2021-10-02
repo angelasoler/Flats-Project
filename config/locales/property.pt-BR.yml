@@ -7,3 +7,9 @@ pt-BR:
       property:
         title: 'Título'
         description: 'Descrição'
+        rooms: 'Quartos'
+        daily_rate: 'Diária'
+        property_type: 'Tipo'
+        bathroom: 'Banheiros'
+        pets: 'Aceita Pets'
+        parking_slot: 'Estacionamento'

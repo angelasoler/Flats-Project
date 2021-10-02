@@ -34,10 +34,11 @@ describe 'Visitor visit homepage' do
 
   it 'and view property details' do
     #Arrange => Preparar (os dados)
+    property_type = PropertyType.create!(name:'Casa')
     Property.create!({ title: 'Casa com quintal em Copacabana', 
                       description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                       rooms: 3, parking_slot: true, bathroom: 2, pets: true, daily_rate: 500,
-                      property_type: @property_type
+                      property_type: property_type
                     })
 
     visit root_path
@@ -53,15 +54,16 @@ describe 'Visitor visit homepage' do
     expect(page).to have_content("Diária: R$ 500,00")
   end
    
-  it 'and view property details and return to home page' do
-    property = Property.create({ title: 'Casa com quintal em Copacabana', 
+  it 'and view property details and return to homepage' do
+    property_type = PropertyType.create!(name:'Casa')
+    Property.create!({ title: 'Casa com quintal em Copacabana', 
                                  description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                                  rooms: 3, parking_slot: true, bathroom: 2, pets: true, daily_rate: 500,
-                                 property_type: @property_type
+                                 property_type: property_type
                                })
-    Property.create({ title: 'Cobertura em Manaus', 
+    Property.create!({ title: 'Cobertura em Manaus', 
                       description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
-                      rooms: 5, parking_slot: false, property_type: @property_type
+                      rooms: 5, parking_slot: false, bathroom: 1, pets: true, daily_rate: 300, property_type: property_type
                     })
     #Act => Agir (executar a funcionalidade)
     visit root_path

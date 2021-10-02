@@ -13,7 +13,6 @@ class PropertiesController < ApplicationController
     if @property.save
       redirect_to property_path(properties.id)
     else
-      flash[:alert] = "Todos campos devem ser preenchidos"
       render :new
     end
   end
