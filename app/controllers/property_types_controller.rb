@@ -1,6 +1,6 @@
-class PropertiesTypes < ApplicationController
+class PropertyTypesController < ApplicationController
   def show
     id = params[:id]
-    @property_types = PropertyType.find(id)
+    @property_type = PropertyType.find(id)
   end
 end  
