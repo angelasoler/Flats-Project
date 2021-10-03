@@ -35,6 +35,18 @@ describe 'Visitor log in' do
     end
 
     it 'and create an account' do
+
+      visit root_path
+      click_on 'Crear Conta'
+      fill_in 'E-mail', with: 'fakemail@fake.com'
+      fill_in  'Senha', with: '123456'
+      fill_in 'Confirme seu senha', with: '123456'
+      click_on 'Enviar'
+
+      expect(page).to have_content('Conta cadastrada com sucesso!!')
+      expect(page).to have_link('Cadastrar Imóvel')
+      expect(page).to have_content(property_owner.email)
+      expect(page).not_to have_link('Entrar')
       # email, senha e confirmação de senha
     end
     
