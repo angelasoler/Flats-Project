@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-describe 'Visitor register property type' do
+describe 'Visitor register property location' do
   it 'successfully' do
     property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
     
     visit root_path
     click_on 'Cadastrar Imóvel'
-    click_on 'Cadastrar Tipo De Imóvel'
-    fill_in 'Nome do tipo do seu imóvel', with: 'casa'
+    click_on 'Cadastrar Região Do Imóvel'
+    fill_in 'Nome da região do seu imóvel', with: 'Jardim Libano'
     click_on 'Cadastrar'
     
-    expect(page).to have_content('Tipo de imóvel cadastrado com sucesso!')
+    expect(page).to have_content('Região cadastrada com sucesso!')
     expect(page).to have_content('Cadastro de Imóvel')
 
   end
@@ -20,26 +20,26 @@ describe 'Visitor register property type' do
       
     visit root_path
     click_on 'Cadastrar Imóvel'
-    click_on 'Cadastrar Tipo De Imóvel'
-    fill_in 'Nome do tipo do seu imóvel', with: ''
+    click_on 'Cadastrar Região Do Imóvel'
+    fill_in 'Nome da região do seu imóvel', with: ''
     click_on 'Cadastrar'
 
     expect(page).to have_content('Nome não pode ficar em branco')
-    expect(page).to have_content('Nome do tipo do seu imóvel')
+    expect(page).to have_content('Nome da região do seu imóvel')
   end
 
-  it 'and register and existing type' do
+  it 'and register and existing location' do
     property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
-    PropertyType.create!(name: 'Casa')
+    PropertyLocation.create!(name: 'Jardim Libano')
       
     visit root_path
     click_on 'Cadastrar Imóvel'
-    click_on 'Cadastrar Tipo De Imóvel'
-    fill_in 'Nome do tipo do seu imóvel', with: 'Casa'
+    click_on 'Cadastrar Região Do Imóvel'
+    fill_in 'Nome da região do seu imóvel', with: 'Jardim Libano'
     click_on 'Cadastrar'
 
     expect(page).to have_content('Nome já está em uso')
     expect(page).to have_link('Cadastrar Imóvel')
-    # add para que nao se repita com vairaçoes de downcase e upcase
+    # add para que nao se repita com variaçoes de downcase e upcase
   end
 end

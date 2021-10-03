@@ -1,0 +1,4 @@
+<h1>Imóveis do tipo <%= @property_location.name %></h1>
+<% @property_location.properties.each do |property| %>
+  <%= property.title %>
+<% end %>

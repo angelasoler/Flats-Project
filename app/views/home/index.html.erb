@@ -12,15 +12,6 @@
   <div><span>Nenhum imóvel disponível</span></div>
 <% end %>
 
-<aside>
-  <h2>Filtrar por tipo:</h2>
-  <nav>
-    <% @property_type.each do |type| %>
-      <%= link_to type.name, property_type_path(type.id) %>
-    <% end %>
-  </nav> 
-</aside>
-
 <section>
   <% @properties.each do |p| %>
     <%= link_to p.title, property_path(id: p.id) %>
@@ -30,3 +21,20 @@
   <% end %>
 </section>
 
+<aside>
+  <h2>Filtrar por tipo:</h2>
+  <nav>
+    <% @property_type.each do |type| %>
+      <%= link_to type.name, property_type_path(type.id) %>
+    <% end %>
+  </nav> 
+</aside>
+
+<aside>
+  <h2>Filtrar por região:</h2>
+  <nav>
+    <% @property_location.each do |location| %>
+      <%= link_to location.name, property_location_path(location.id) %>
+    <% end %>
+  </nav> 
+</aside>

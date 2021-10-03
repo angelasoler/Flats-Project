@@ -5,6 +5,7 @@ describe 'Visitor register property' do
   it 'successfully' do
     #Arrange
     PropertyType.create!(name: 'Casa')
+    PropertyLocation.create!(name: 'UFSC')
     #Act
     visit root_path
     click_on 'Cadastrar Imóvel'
@@ -66,8 +67,9 @@ describe 'Visitor register property' do
 
   it 'and bathroom, daily_rate and rooms fields are greater than zero' do
     PropertyType.create!(name: 'Casa')
-    visit root_path
+    PropertyLocation.create!(name: 'UFSC')
 
+    visit root_path
     click_on 'Cadastrar Imóvel'
     fill_in 'Título', with: 'Casa em Florianópolis'
     fill_in 'Descrição', with: 'Ótima casa perto do UFSC'

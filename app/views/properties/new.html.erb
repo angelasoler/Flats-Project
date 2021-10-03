@@ -38,6 +38,12 @@
   </div>
 
   <div>
+    <%= f.label :property_location_id, 'Região' %>
+    <%= f.collection_select :property_location_id, PropertyLocation.all, :id, :name %>
+    <%= link_to 'Cadastrar Região Do Imóvel',  new_property_location_path %>
+  </div>
+
+  <div>
     <%= f.label :bathroom, 'Banheiros' %>
     <%= f.number_field :bathroom %>
   </div>

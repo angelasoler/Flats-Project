@@ -16,17 +16,19 @@ describe 'visitor filter properties by type' do
   it 'sucessfully' do
     casa = PropertyType.create!(name:'Casa')
     apartamento = PropertyType.create!(name:'apartamento')
+    copacabana = PropertyLocation.create!(name: 'Copacabana')
+    centro = PropertyLocation.create!(name: 'Centro')
     
     Property.create!({title:'Casa com quintal em Copacabana', 
                       description: 'Excelente casa, recém reformada com 2 vagas de garagem',
                       rooms: 3,  parking_slot: true, bathroom: 2, pets: true, daily_rate: 500,
-                      property_type: casa
+                      property_type: casa, property_location: copacabana
                       })
 
-    Property.create!({title: 'Cobertura em Manaus', 
+    Property.create!({title: 'Cobertura no centro', 
                       description: 'Cobertura de 300m2, churrasqueira e sauna privativa',
                       rooms: 5, parking_slot: false,bathroom: 1, pets: true, daily_rate: 300,
-                      property_type: apartamento
+                      property_type: apartamento, property_location: centro
                       })
 
     visit root_path
@@ -34,6 +36,6 @@ describe 'visitor filter properties by type' do
     
     expect(page).to have_css('h1', text: 'Imóveis do tipo Casa')
     expect(page).to have_content('Casa com quintal em Copacabana')
-    expect(page).not_to have_content('Cobertura em Manaus')
+    expect(page).not_to have_content('Cobertura no centro')
   end
 end
