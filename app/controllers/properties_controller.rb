@@ -1,4 +1,6 @@
 class PropertiesController < ApplicationController
+  before_action :authenticate_property_owner!, only: [:new, :create]
+
   def show
     id = params[:id]
     @properties = Property.find(id)
@@ -10,11 +12,16 @@ class PropertiesController < ApplicationController
   
   def create
     @property = Property.new(property_params)
+    @property.property_owner = current_property_owner
     if @property.save
       redirect_to property_path(@property)
     else
       render :new
     end
+  end
+
+  def my_properties
+    @properties = current_property_owner.properties
   end
 
   private
