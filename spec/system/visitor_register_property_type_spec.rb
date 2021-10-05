@@ -4,6 +4,7 @@ describe 'Visitor register property type' do
   it 'successfully' do
     property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
     
+    login_as property_owner, scope: :property_owner
     visit root_path
     click_on 'Cadastrar Imóvel'
     click_on 'Cadastrar Tipo De Imóvel'
@@ -18,6 +19,7 @@ describe 'Visitor register property type' do
   it 'and must fill the field' do
     property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
       
+    login_as property_owner, scope: :property_owner
     visit root_path
     click_on 'Cadastrar Imóvel'
     click_on 'Cadastrar Tipo De Imóvel'
@@ -32,6 +34,7 @@ describe 'Visitor register property type' do
     property_owner = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
     PropertyType.create!(name: 'Casa')
       
+    login_as property_owner, scope: :property_owner
     visit root_path
     click_on 'Cadastrar Imóvel'
     click_on 'Cadastrar Tipo De Imóvel'

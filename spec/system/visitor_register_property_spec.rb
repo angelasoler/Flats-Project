@@ -4,10 +4,11 @@ describe 'Visitor register property' do
 
   it 'successfully' do
     #Arrange
-    property_owner = PropertyOwner.create!(email: 'jane@doe.com', senha: '123456')
+    property_owner = PropertyOwner.create!(email: 'jane@doe.com', password: '123456')
     PropertyType.create!(name: 'Casa')
     PropertyLocation.create!(name: 'UFSC')
     #Act
+    login_as property_owner, scope: :property_owner
     visit root_path
     click_on 'Cadastrar Imóvel'
     fill_in 'Título', with: 'Casa em Florianópolis'
@@ -33,8 +34,10 @@ describe 'Visitor register property' do
   end
 
   it 'and must fill all fields' do
-    visit root_path
+    property_owner = PropertyOwner.create!(email: 'proprietário@mai.com', password: '123456')
 
+    login_as property_owner, scope: :property_owner
+    visit root_path
     click_on 'Cadastrar Imóvel'
     click_on 'Enviar'
 
@@ -68,9 +71,11 @@ describe 'Visitor register property' do
   # end
 
   it 'and bathroom, daily_rate and rooms fields are greater than zero' do
+    property_owner = PropertyOwner.create!(email: 'proprietário@mai.com', password: '123456')
     PropertyType.create!(name: 'Casa')
     PropertyLocation.create!(name: 'UFSC')
-
+    
+    login_as property_owner, scope: :property_owner
     visit root_path
     click_on 'Cadastrar Imóvel'
     fill_in 'Título', with: 'Casa em Florianópolis'
