@@ -5,19 +5,19 @@ describe 'Visitor log in' do
     it 'successfully' do
       jane = PropertyOwner.create!(email: 'jane@doe.com.br', password: '123456789')
 
-      visit_root_path
+      visit root_path
       click_on 'Entrar'
       fill_in 'Email', with: jane.email
       fill_in 'Senha', with: jane.password
       within 'form' do
-        click_on 'Entrar'
+      click_on 'Entrar'
       end
 
       expect(page).to have_content('Login efetuado com sucesso!')
       expect(page).to have_content(jane.email)
       expect(page).to have_link('Logout')
       expect(page).not_to have_link('Entrar')
-      expect(page).to have_link('Cadastar Imóvel')
+      expect(page).to have_link('Cadastrar Imóvel')
     end
 
     it 'and logs out' do
@@ -37,11 +37,11 @@ describe 'Visitor log in' do
     it 'and create an account' do
       
       visit root_path
-      click_on 'Crear Conta'
-      fill_in 'E-mail', with: 'fakemail@fake.com'
+      click_on 'Crie uma conta'
+      fill_in 'Email', with: 'fakemail@fake.com'
       fill_in  'Senha', with: '123456'
-      fill_in 'Confirme seu senha', with: '123456'
-      click_on 'Enviar'
+      fill_in 'Confirmação de senha', with: '123456'
+      click_on 'Criar Conta'
 
       expect(page).to have_content('Conta cadastrada com sucesso!!')
       expect(page).to have_link('Cadastrar Imóvel')
@@ -51,6 +51,6 @@ describe 'Visitor log in' do
     end
     
     context 'as user' do
-      
     end
+  end
 end

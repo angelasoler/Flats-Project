@@ -3,7 +3,9 @@
   <h3>Boas vindas ao sistema de locação de apartamentos</h3>
   <div>
     <nav>
-      <%= link_to 'Cadastrar Imóvel', new_property_path %>
+      <% if @property_owner_signed_in%>
+        <%= link_to 'Cadastrar Imóvel', new_property_path %>
+      <% end %>
     </nav>
   </div>
 </header>
