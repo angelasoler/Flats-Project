@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :property_tenants
-  devise_for :property_owners
+  devise_for :property_tenants, path: 'tenants'
+  devise_for :property_owners, path: 'owners'
   root to: 'home#index'
   resources :properties, only: [:show, :new, :create] do
     get 'my_properties', on: :collection
