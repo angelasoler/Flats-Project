@@ -1,6 +1,0 @@
-pt-BR:
-  devise:
-    views:
-      registrations:
-        new:
-          Sing up: 'Cadastrar Conta'

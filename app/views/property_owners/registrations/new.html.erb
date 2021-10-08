@@ -1,7 +1,7 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "tenants/shared/error_messages", resource: resource %>
+  <%= render "property_owners/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -22,8 +22,8 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit t(".sign_up") %>
   </div>
 <% end %>
 
-<%= render "tenants/shared/links" %>
+<%= render "property_owners/shared/links" %>

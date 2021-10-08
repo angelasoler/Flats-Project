@@ -7,4 +7,11 @@ pt-BR:
       property_owner:
         password: 'Senha'
         password_confirmation: 'Confirmação de senha'
-        
+  
+  property_owners:
+    sessions:
+      new:
+        log_in: 'Entrar'
+    registrations:
+      new:
+        sign_up: 'Criar Conta'

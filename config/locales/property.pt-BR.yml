@@ -13,3 +13,6 @@ pt-BR:
         bathroom: 'Banheiros'
         pets: 'Aceita Pets'
         parking_slot: 'Estacionamento'
+  properties:
+    new:
+      title: 'Cadastro de Imóvel'
