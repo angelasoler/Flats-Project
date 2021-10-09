@@ -1,36 +1,50 @@
 <div>
 <h1>
-  <%= @properties.title %>
+  <%= @property.title %>
 </h1>
 
-<h2><%= @properties.description %></h2>
+<h2><%= @property.description %></h2>
 
 <dl>
   <dt>Tipo:</dt>
-  <dd><%= @properties.property_type.name %></dd>
+  <dd><%= @property.property_type.name %></dd>
 
   <dt>Quartos:</dt>
-  <dd><%= @properties.rooms %></dd>
+  <dd><%= @property.rooms %></dd>
 
   <dt>Banheiros:</dt>
-  <dd><%= @properties.bathroom %></dd>
+  <dd><%= @property.bathroom %></dd>
 
   <dt>Aceita Pets:</dt> 
-  <% if @properties.pets? %>
+  <% if @property.pets? %>
     <dd>Sim</dd>
   <% else %>
     <dd>Não</dd>
   <% end %>
 
   <dt>Estacionamento:</dt>
-  <% if @properties.parking_slot? %>
+  <% if @property.parking_slot? %>
     <dd>Sim</dd>
   <% else %>
     <dd>Não</dd>
   <% end %>
 
   <dt>Diária:</dt> 
-  <dd><%= number_to_currency(@properties.daily_rate)%></dd>
+  <dd><%= number_to_currency(@property.daily_rate)%></dd>
+
+  <dd><%= @property.property_owner.email %></dd>
 </dl>
-  <%= link_to 'Voltar', root_path %>
+
+  <h3>Verificar datas</h3>
+<%= form_with models: [@property, @property_reservation] do |f| %>
+  <%= f.label :start_date, 'Data de início' %>
+  <%= f.date_field :start_date %>
+  <%= f.label :end_date, 'Data de término' %>
+  <%= f.date_field :end_date %>
+  <%= f.label :guests, 'Quantidade de pessoas' %>
+  <%= f.number_field :guests, step: 1, min: 1 %>
+  <%= f.submit 'Enviar Reserva' %>
+<% end %>
 </div>
+
+<%= link_to 'Voltar', root_path %>

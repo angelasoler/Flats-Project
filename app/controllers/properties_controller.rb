@@ -3,7 +3,8 @@ class PropertiesController < ApplicationController
 
   def show
     id = params[:id]
-    @properties = Property.find(id)
+    @property = Property.find(id)
+    @property_reservation = PropertyReservation.new
   end
 
   def new
