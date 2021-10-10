@@ -36,7 +36,7 @@
   <h2>Filtrar por região:</h2>
   <nav>
     <% @property_location.each do |location| %>
-      <%= link_to location.name, property_location_path(location.id) %>
+      <%= link_to location.name, location  %>
     <% end %>
   </nav> 
 </aside>
