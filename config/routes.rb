@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'my_profile', to: 'property_prenants#my_profile'
 
+  # authenticated :property_owner do
+  #   get 'properties#new', as: :new_property_path
+  # end
+  # get 'properties#new': redirect('/owners/sign_up')
 
   resources :properties, only: [:index, :show, :new, :create] do
     get 'my_properties', on: :collection

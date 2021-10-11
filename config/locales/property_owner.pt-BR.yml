@@ -12,6 +12,7 @@ pt-BR:
     sessions:
       new:
         log_in: 'Entrar'
+        make_your_login: 'Efetue o login'
     registrations:
       new:
         sign_up: 'Criar Conta'
